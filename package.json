@@ -1,0 +1,38 @@
+{
+  "name": "nengine",
+  "version": "2.0.4",
+  "description": "The nengine http/https server",
+  "author": {
+    "name": "nuintun",
+    "email": "nuintun@qq.com"
+  },
+  "homepage": "https://nuintun.github.io/nengine",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nuintun/nengine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nuintun/nengine/issues",
+    "email": "nuintun@qq.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "server",
+    "http",
+    "https",
+    "http server",
+    "https server"
+  ],
+  "dependencies": {
+    "nopt": "^3.0.6",
+    "colors": "^1.1.2",
+    "js-yaml": "^3.6.1",
+    "log4js": "^0.6.37",
+    "file-send": "^2.0.1"
+  },
+  "devDependencies": {},
+  "readmeFilename": "README.md"
+}
