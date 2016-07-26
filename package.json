@@ -1,18 +1,18 @@
 {
-  "name": "nengine",
-  "version": "2.0.4",
-  "description": "The nengine http/https server",
+  "name": "fengine",
+  "version": "0.0.1",
+  "description": "A development tool for f2e",
   "author": {
     "name": "nuintun",
     "email": "nuintun@qq.com"
   },
-  "homepage": "https://nuintun.github.io/nengine",
+  "homepage": "https://nuintun.github.io/fengine",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nuintun/nengine.git"
+    "url": "git://github.com/nuintun/fengine.git"
   },
   "bugs": {
-    "url": "https://github.com/nuintun/nengine/issues",
+    "url": "https://github.com/nuintun/fengine/issues",
     "email": "nuintun@qq.com"
   },
   "license": "MIT",
@@ -20,19 +20,18 @@
     "node": ">=0.10.0"
   },
   "keywords": [
+    "f2e",
     "server",
     "http",
-    "https",
+    "development",
     "http server",
-    "https server"
+    "development tool"
   ],
   "dependencies": {
-    "nopt": "^3.0.6",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
-    "log4js": "^0.6.37",
+    "commander": "^2.9.0",
     "file-send": "^2.0.1"
   },
-  "devDependencies": {},
   "readmeFilename": "README.md"
 }
