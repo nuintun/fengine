@@ -11,6 +11,8 @@ var pkg = require('../package.json');
 var yargs = require('yargs');
 
 var argv = yargs
+  .version('v', null, pkg.version)
+  .alias('v', 'version')
   .usage('Usage: [options]')
   .option('p', {
     alias: 'port',
