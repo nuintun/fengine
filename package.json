@@ -19,6 +19,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "bin": {
+    "fengine": "bin/fengine.js"
+  },
   "keywords": [
     "f2e",
     "server",
@@ -28,9 +31,9 @@
     "development tool"
   ],
   "dependencies": {
+    "yargs": "^4.8.1",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
-    "commander": "^2.9.0",
     "file-send": "^2.0.1"
   },
   "readmeFilename": "README.md"
