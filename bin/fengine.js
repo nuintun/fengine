@@ -16,8 +16,7 @@ new Tilda({
   version: pkg.version,
   description: colors.cyan.bold(pkg.description),
   documentation: colors.magenta.bold(pkg.homepage),
-  examples: ['fengine', 'fengine -p 80'],
-  notes: 'Well, this is just a tiny example how to use fengine.'
+  examples: ['fengine', 'fengine -p 80']
 }).option([
   {
     default: 80,
