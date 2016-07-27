@@ -20,7 +20,7 @@
     "node": ">=0.10.0"
   },
   "bin": {
-    "fengine": "bin/fengine"
+    "fengine": "bin/fengine.js"
   },
   "keywords": [
     "f2e",
@@ -31,6 +31,7 @@
     "development tool"
   ],
   "dependencies": {
+    "tilda": "^4.3.1",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
     "file-send": "^2.0.1"
