@@ -16,7 +16,7 @@ program
   .version(pkg.version)
   .allowUnknownOption()
   .description(colors.cyan.bold(pkg.description))
-  .option('-p, --port <number>', 'set the server port [default: 80]', function (value, def){
+  .option('-p, --port <number>', 'set the fengine server port', function (value, def){
     value = Math.abs(parseInt(value));
 
     if (value !== value || value === Infinity) {
