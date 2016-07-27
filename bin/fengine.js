@@ -15,15 +15,15 @@ program
   .version(pkg.version)
   .description(colors.cyan.bold(pkg.description))
   .usage('[options] <value ...>')
-  .option('-p, --port <number>', 'set the server port [default: 80]', function (value){
+  .option('-p, --port <number>', 'set the server port [default: 80]', function (value, def){
     value = Math.abs(parseInt(value));
 
     if (value !== value || value === Infinity) {
-      value = 80;
+      value = def;
     }
 
     return value;
-  })
+  }, 80)
   .on('--help', function (){
     var help = '  For more information, find our manual at ' + pkg.homepage + '\n';
 
