@@ -25,7 +25,7 @@ program
     return value;
   })
   .on('--help', function (){
-    var help = '  for more information, find our manual at ' + pkg.homepage + '\n';
+    var help = '  For more information, find our manual at ' + pkg.homepage + '\n';
 
     process.stdout.write(colors.green.bold(help));
   })
