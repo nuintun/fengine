@@ -23,7 +23,7 @@ new Tilda({
     name: 'port',
     type: 'number',
     opts: ['p', 'port'],
-    desc: 'Set the server port.'
+    desc: 'Set the fengine server port.'
   }
 ]).main(function (tilda){
   var port = tilda.options.port;
