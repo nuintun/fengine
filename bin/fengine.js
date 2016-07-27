@@ -10,6 +10,7 @@ var program = require('commander');
 var colors = require('colors/safe');
 var pkg = require('../package.json');
 
+// set commander
 program
   .allowUnknownOption()
   .version(pkg.version)
@@ -31,4 +32,5 @@ program
   })
   .parse(process.argv);
 
-console.log(JSON.stringify(program, null, 2));
+// run fengine
+fengine.run(program);
