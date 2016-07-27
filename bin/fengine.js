@@ -31,4 +31,4 @@ program
   })
   .parse(process.argv);
 
-console.log(program.port);
+console.log(JSON.stringify(program, null, 2));
