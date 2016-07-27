@@ -33,8 +33,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
-    "file-send": "^2.0.1",
-    "commander": "^2.9.0"
+    "file-send": "^2.0.1"
   },
   "readmeFilename": "README.md"
 }
