@@ -13,7 +13,7 @@ var pkg = require('../package.json');
 program
   .allowUnknownOption()
   .version(pkg.version)
-  .description(pkg.description)
+  .description(colors.cyan.bold(pkg.description))
   .usage('[options] <value ...>')
   .option('-p, --port <number>', 'set the server port [default: 80]', function (value){
     value = Math.abs(parseInt(value));
