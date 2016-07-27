@@ -16,7 +16,7 @@ new Tilda({
   version: pkg.version,
   description: colors.cyan.bold(pkg.description),
   documentation: colors.magenta.bold(pkg.homepage),
-  examples: ['fengine', 'fengine -p 80']
+  examples: ['fengine', 'fengine -p 80', 'fengine --port 80']
 }).option([
   {
     default: 80,
