@@ -28,6 +28,6 @@ new Tilda({
 ]).main(function (tilda){
   var port = tilda.options.port;
 
-  console.log(port.value < 0 ? port.default : port.value);
+  fengine.run(port.value < 0 ? port.default : port.value);
 });
 
