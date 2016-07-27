@@ -6,22 +6,29 @@
 process.title = 'fengine';
 
 var fengine = require('../');
+var program = require('commander');
 var colors = require('colors/safe');
 var pkg = require('../package.json');
-var yargs = require('yargs');
 
-var argv = yargs
-  .version('v', null, pkg.version)
-  .alias('v', 'version')
-  .usage('Usage: [options]')
-  .option('p', {
-    alias: 'port',
-    default: 80,
-    describe: 'Server port',
-    type: 'number'
+program
+  .allowUnknownOption()
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options] <value ...>')
+  .option('-p, --port <number>', 'set the server port [default: 80]', function (value){
+    value = Math.abs(parseInt(value));
+
+    if (value !== value || value === Infinity) {
+      value = 80;
+    }
+
+    return value;
   })
-  .help('h')
-  .alias('h', 'help')
-  .argv;
+  .on('--help', function (){
+    var help = '  for more information, find our manual at ' + pkg.homepage + '\n';
 
-console.log(argv);
+    process.stdout.write(colors.green.bold(help));
+  })
+  .parse(process.argv);
+
+console.log(program.port);

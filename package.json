@@ -31,10 +31,10 @@
     "development tool"
   ],
   "dependencies": {
-    "yargs": "^4.8.1",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
-    "file-send": "^2.0.1"
+    "file-send": "^2.0.1",
+    "commander": "^2.9.0"
   },
   "readmeFilename": "README.md"
 }
