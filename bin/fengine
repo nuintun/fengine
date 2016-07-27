@@ -12,10 +12,10 @@ var pkg = require('../package.json');
 
 // set commander
 program
-  .allowUnknownOption()
+  .usage('[options]')
   .version(pkg.version)
+  .allowUnknownOption()
   .description(colors.cyan.bold(pkg.description))
-  .usage('[options] <value ...>')
   .option('-p, --port <number>', 'set the server port [default: 80]', function (value, def){
     value = Math.abs(parseInt(value));
 
