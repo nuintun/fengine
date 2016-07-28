@@ -20,7 +20,7 @@
     "node": ">=0.10.0"
   },
   "bin": {
-    "fengine": "bin/fengine.js"
+    "fengine": "bin/fengine"
   },
   "keywords": [
     "f2e",
