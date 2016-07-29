@@ -88,12 +88,12 @@ module.exports.run = function (port){
     text: function (value){
       console.log('text: %s', JSON.stringify(value));
     },
-    vars: function (value, origin, vars){
+    vars: function (value, origin, attr){
       console.log(
         'vars: %s, origin: %s, vars: %s',
         JSON.stringify(value),
         JSON.stringify(origin),
-        JSON.stringify(vars)
+        JSON.stringify(attr)
       );
     }
   }, {
