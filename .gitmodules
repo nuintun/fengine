@@ -1,3 +1,3 @@
 [submodule "extend"]
-    path = lib/extend
-    url = git://github.com/nuintun/extend.git
+	path = lib/extend
+	url = git://github.com/nuintun/extend.git
