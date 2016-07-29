@@ -61,22 +61,24 @@ module.exports.run = function (port){
   var html = fs.readFileSync('./test/index.html').toString();
 
   htmlParser.parse(html, {
-    xmlType: function (value){console.log('xmltype: %s', value); },
+    xmlType: function (value){console.log('xmltype: %s', JSON.stringify(value)); },
     openElement: function (name){ console.log('open: %s', name); },
     closeOpenedElement: function (name, token, unary){ console.log('name: %s, token: %s, unary: %s', name, token, unary); },
     closeElement: function (name){ console.log('close: %s', name); },
-    comment: function (value){ console.log('comment: %s', value); },
-    cdata: function (value){ console.log('cdata: %s', value); },
-    attribute: function (name, value){ console.log('attribute: %s=%s', name, value); },
-    docType: function (value){ console.log('doctype: %s', value); },
+    comment: function (value){ console.log('comment: %s', JSON.stringify(value)); },
+    cdata: function (value){ console.log('cdata: %s', JSON.stringify(value)); },
+    attribute: function (name, value){ console.log('attribute: %s=%s', name, JSON.stringify(value)); },
+    docType: function (value){ console.log('doctype: %s', JSON.stringify(value)); },
     text: function (value){ console.log('text: %s', JSON.stringify(value)); },
-    vars: function (value){ console.log('vars: %s', JSON.stringify(value)); }
+    vars: function (value, origin){
+      console.log('vars: %s, origin: %s', JSON.stringify(value), JSON.stringify(origin));
+    }
   }, {
     dataElements: {
       vars: {
         start: /\{\{\s*/,
         data: function (){
-          // return 'aaa-bbb';
+          return 'aaa-bbb';
         },
         end: /\s*\}\}/
       }
