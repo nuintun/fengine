@@ -3,90 +3,61 @@
  */
 
 var fs = require('fs');
-// var HTMLParser = require('./lib/htmlparser');
+var htmlParser = require('./lib/htmlparser/parser');
 
 module.exports.run = function (port){
   console.log('Server run at port %d.', port);
 
-  // HTMLParser(fs.readFileSync('./test/index.html').toString(), {
-  //   html5: true,
-  //   partialMarkup: true,
-  //   customAttrAssign: [],
-  //   customAttrSurround: [],
-  //   doctype: function (doctype){
-  //     console.log(doctype)
-  //   },
-  //   comment: function (comment){
-  //     console.log(comment);
-  //   },
-  //   start: function (name, attrs, unary, slash){
-  //     console.log(name, JSON.stringify(attrs, null, 2), unary, slash);
-  //   },
-  //   end: function (name){
-  //     console.log(name);
-  //   },
-  //   chars: function (chars){
-  //     console.log(chars);
-  //   }
-  // });
+  var html = '';
+  var source = fs
+    .readFileSync('./test/index.html')
+    .toString();
 
-  // var htmlParser = require('html-parser');
-  //
-  // var html = fs.readFileSync('./test/index.html').toString();
-  //
-  // htmlParser.parse(html, {
-  //   openElement: function (name){ console.log('open: %s', name); },
-  //   closeOpenedElement: function (name, token, unary){ console.log('name: %s, token: %s, unary: %s', name, token, unary); },
-  //   closeElement: function (name){ console.log('close: %s', name); },
-  //   comment: function (value){ console.log('comment: %s', value); },
-  //   cdata: function (value){ console.log('cdata: %s', value); },
-  //   attribute: function (name, value){ console.log('attribute: %s=%s', name, value); },
-  //   docType: function (value){ console.log('doctype: %s', value); },
-  //   text: function (value){ console.log('text: %s', JSON.stringify(value)); },
-  //   vars: function (value){ console.log('vars: %s', JSON.stringify(value)); }
-  // }, {
-  //   dataElements: {
-  //     vars: {
-  //       start: '{{',
-  //       data: function (){
-  //         return 'aaa-bbb';
-  //       },
-  //       end: '}}'
-  //     }
-  //   }
-  // });
-
-  var htmlParser = require('./lib/htmlparser/parser');
-
-  var html = fs.readFileSync('./test/index.html').toString();
-
-  htmlParser.parse(html, {
-    xmlType: function (value){
+  htmlParser.parse(source, {
+    xmlType: function (value, origin, attr){
       console.log('xmltype: %s', JSON.stringify(value));
+
+      html += attr[0] + value + attr[1];
     },
     openElement: function (name){
       console.log('open: %s', name);
+
+      html += '<' + name;
     },
     closeOpenedElement: function (name, token, unary){
       console.log('name: %s, token: %s, unary: %s', name, token, unary);
+
+      html += token;
     },
     closeElement: function (name){
       console.log('close: %s', name);
+
+      html += '</' + name + '>';
     },
-    comment: function (value){
+    comment: function (value, origin, attr){
       console.log('comment: %s', JSON.stringify(value));
+
+      html += attr[0] + value + attr[1];
     },
-    cdata: function (value){
+    cdata: function (value, origin, attr){
       console.log('cdata: %s', JSON.stringify(value));
+
+      html += attr[0] + value + attr[1];
     },
     attribute: function (name, value){
       console.log('attribute: %s=%s', name, JSON.stringify(value));
+
+      html += ' ' + name + (value ? JSON.stringify(value) : '');
     },
-    docType: function (value){
+    docType: function (value, origin, attr){
       console.log('doctype: %s', JSON.stringify(value));
+
+      html += attr[0] + value + attr[1];
     },
     text: function (value){
       console.log('text: %s', JSON.stringify(value));
+
+      html += value;
     },
     vars: function (value, origin, attr){
       console.log(
@@ -95,19 +66,23 @@ module.exports.run = function (port){
         JSON.stringify(origin),
         JSON.stringify(attr)
       );
+
+      html += attr[0] + value + attr[1];
     }
   }, {
     dataElements: {
       vars: {
-        start: /\{\{\s*/,
+        start: /\s*\{\{\s*/,
         data: function (){
           return 'aaa-bbb';
         },
-        end: /\s*\}\}/
+        end: /\s*\}\}\s*/
       }
     }
   });
 
+  console.log();
+  console.log(html);
   // function type(value){
   //   // nan
   //   if (value !== value) {
