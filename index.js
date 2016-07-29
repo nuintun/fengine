@@ -3,85 +3,27 @@
  */
 
 var fs = require('fs');
-var HTMLParser = require('htmlparser2');
-
-// self closing elements
-var SINGLETAG = {
-  area: true,
-  base: true,
-  basefont: true,
-  br: true,
-  col: true,
-  command: true,
-  embed: true,
-  frame: true,
-  hr: true,
-  img: true,
-  input: true,
-  isindex: true,
-  keygen: true,
-  link: true,
-  meta: true,
-  param: true,
-  source: true,
-  track: true,
-  wbr: true,
-  // self closing svg elements
-  path: true,
-  circle: true,
-  ellipse: true,
-  line: true,
-  rect: true,
-  use: true,
-  stop: true,
-  polyline: true,
-  polygon: true
-};
+var HTMLParser = require('./lib/htmlparser').HTMLParser;
 
 module.exports.run = function (port){
   console.log('Server run at port %d.', port);
 
-  var html = '';
-
-  var parser = new HTMLParser.Parser({
-    onprocessinginstruction: function (name, data){
-      console.log(name, JSON.stringify(data), '--- data');
-      html += '<' + data + '>';
+  HTMLParser(fs.readFileSync('./test/index.html').toString(), {
+    customAttrSurround: [[/\{\{#.+\}\}/, /\{\{\/.+\}\}/]],
+    comment: function (comment){
+      console.log(comment);
     },
-    oncomment: function (comment){
-      console.log(comment, '--- comment');
-      html += '<!--' + comment + '-->';
+    ignore: function (){
+      console.log(arguments);
     },
-    onattribute: function (attribute, value){
-      console.log(attribute, JSON.stringify(value), '--- attr');
-      html += ' ' + attribute + (value ? '="' + value + '"' : '');
+    start: function (tagName, attrs, unary, unarySlash){
+      console.log(tagName, JSON.stringify(attrs, null, 2), unary, unarySlash);
     },
-    onopentagname: function (name){
-      console.log(name, '--- open');
-      html += '<' + name;
+    end: function (tagName){
+      console.log(tagName, '-------------------');
     },
-    onopentag: function (name){
-      html += SINGLETAG[name] ? '/>' : '>';
-    },
-    ontext: function (text){
-      console.log(JSON.stringify(text), '--- text');
-      html += text;
-    },
-    onclosetag: function (name){
-      console.log(name, '--- close');
-      if (!SINGLETAG[name]) {
-        html += '</' + name + '>';
-      }
-    },
-    onend: function (){
-      console.log();
-      console.log(html);
+    chars: function (chars){
+      console.log(chars);
     }
-  }, {
-    decodeEntities: true
   });
-
-  fs
-    .createReadStream('./test/index.html')
-    .pipe(parser);
 };

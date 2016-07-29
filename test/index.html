@@ -14,7 +14,8 @@
       <!--include(0)-->
       <!--include(0)-->
       <!--include(0)-->
+      {{#if value}}alt="img"{{/if}}
     </div>
-    <img src="{{ basename }}/index.html" style="background: url(index.html);"/>
+    <img src="index.html" style="background: url(index.html);" {{#if value}}alt="img"{{/if}}/>
   </body>
 </html>

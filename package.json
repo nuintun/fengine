@@ -32,11 +32,10 @@
   ],
   "dependencies": {
     "tilda": "^4.3.1",
+    "ncname": "^1.0.0",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
-    "file-send": "^2.0.1",
-    "htmlparser2": "^3.9.1",
-    "parse5": "^2.1.5"
+    "file-send": "^2.0.1"
   },
   "readmeFilename": "README.md"
 }
