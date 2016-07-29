@@ -61,6 +61,7 @@ module.exports.run = function (port){
   var html = fs.readFileSync('./test/index.html').toString();
 
   htmlParser.parse(html, {
+    xmlType: function (value){console.log('xmltype: %s', value); },
     openElement: function (name){ console.log('open: %s', name); },
     closeOpenedElement: function (name, token, unary){ console.log('name: %s, token: %s, unary: %s', name, token, unary); },
     closeElement: function (name){ console.log('close: %s', name); },
@@ -75,7 +76,7 @@ module.exports.run = function (port){
       vars: {
         start: '{{',
         data: function (){
-          return 'aaa-bbb';
+          // return 'aaa-bbb';
         },
         end: '}}'
       }
