@@ -17,7 +17,7 @@ module.exports.run = function (port){
       console.log(tagName, JSON.stringify(attrs, null, 2), unary, unarySlash);
     },
     end: function (tagName){
-      console.log(tagName, '-------------------');
+      console.log(tagName);
     },
     chars: function (chars){
       console.log(chars);
