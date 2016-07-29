@@ -47,7 +47,7 @@ module.exports.run = function (port){
     attribute: function (name, value){
       console.log('attribute: %s=%s', name, JSON.stringify(value));
 
-      html += ' ' + name + (value ? JSON.stringify(value) : '');
+      html += ' ' + name + '=' + (value ? JSON.stringify(value) : '');
     },
     docType: function (value, origin, attr){
       console.log('doctype: %s', JSON.stringify(value));
