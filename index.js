@@ -70,8 +70,9 @@ module.exports.run = function (port){
     attribute: function (name, value){ console.log('attribute: %s=%s', name, JSON.stringify(value)); },
     docType: function (value){ console.log('doctype: %s', JSON.stringify(value)); },
     text: function (value){ console.log('text: %s', JSON.stringify(value)); },
-    vars: function (value, origin){
-      console.log('vars: %s, origin: %s', JSON.stringify(value), JSON.stringify(origin));
+    vars: function (value, origin, vars){
+      // console.log('vars: %s, origin: %s', JSON.stringify(value), JSON.stringify(origin));
+      console.log(vars);
     }
   }, {
     dataElements: {
