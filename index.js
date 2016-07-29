@@ -3,7 +3,7 @@
  */
 
 var fs = require('fs');
-var HTMLParser = require('./lib/htmlparser').HTMLParser;
+var HTMLParser = require('./lib/htmlparser');
 
 module.exports.run = function (port){
   console.log('Server run at port %d.', port);
@@ -12,9 +12,6 @@ module.exports.run = function (port){
     customAttrSurround: [[/\{\{#.+\}\}/, /\{\{\/.+\}\}/]],
     comment: function (comment){
       console.log(comment);
-    },
-    ignore: function (){
-      console.log(arguments);
     },
     start: function (tagName, attrs, unary, unarySlash){
       console.log(tagName, JSON.stringify(attrs, null, 2), unary, unarySlash);
