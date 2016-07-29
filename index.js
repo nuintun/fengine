@@ -9,15 +9,21 @@ module.exports.run = function (port){
   console.log('Server run at port %d.', port);
 
   HTMLParser(fs.readFileSync('./test/index.html').toString(), {
-    customAttrSurround: [[/\{\{#.+\}\}/, /\{\{\/.+\}\}/]],
+    html5: true,
+    partialMarkup: true,
+    customAttrAssign: [],
+    customAttrSurround: [],
+    doctype: function (doctype){
+      console.log(doctype)
+    },
     comment: function (comment){
       console.log(comment);
     },
-    start: function (tagName, attrs, unary, unarySlash){
-      console.log(tagName, JSON.stringify(attrs, null, 2), unary, unarySlash);
+    start: function (name, attrs, unary, slash){
+      console.log(name, JSON.stringify(attrs, null, 2), unary, slash);
     },
-    end: function (tagName){
-      console.log(tagName);
+    end: function (name){
+      console.log(name);
     },
     chars: function (chars){
       console.log(chars);
