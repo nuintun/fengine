@@ -72,11 +72,11 @@ module.exports.run = function (port){
   }, {
     dataElements: {
       vars: {
-        start: /\s*\{\{\s*/,
+        start: /[{]{2}\s*/,
         data: function (){
           return 'aaa-bbb';
         },
-        end: /\s*\}\}\s*/
+        end: /\s*[}]{2}/
       }
     }
   });
