@@ -14,7 +14,7 @@ module.exports.run = function (port){
     .readFileSync('./test/index.html')
     .toString();
 
-  var LOGS = false;
+  var LOGS = true;
 
   console.time('parse');
 
@@ -93,25 +93,5 @@ module.exports.run = function (port){
 
   console.timeEnd('parse');
 
-  fs.writeFileSync('./test/modify.html', html);
-
-  console.log(source == fs.readFileSync('./test/modify.html').toString());
-  // function type(value){
-  //   // nan
-  //   if (value !== value) {
-  //     return 'nan';
-  //   }
-  //
-  //   if (value === Infinity || value === -Infinity) {
-  //     return 'infinity';
-  //   }
-  //
-  //   // get real type
-  //   var type = toString.call(value).toLowerCase();
-  //
-  //   // return type
-  //   return type.replace(/\[object (.+)\]/, '$1').toLowerCase();
-  // }
-  //
-  // console.log(type(-Infinity))
+  console.log(html);
 };
