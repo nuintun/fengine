@@ -49,10 +49,10 @@ module.exports.run = function (port){
 
       html += attr[0] + value + attr[1];
     },
-    attribute: function (name, value){
+    attribute: function (name, value, quote){
       LOGS && console.log('attribute: %s=%s', name, JSON.stringify(value));
 
-      html += name + (value ? '=' + JSON.stringify(value) : '');
+      html += name + (value !== undefined ? '=' + quote + value + quote : '');
     },
     docType: function (value, origin, attr){
       LOGS && console.log('doctype: %s', JSON.stringify(value));
@@ -94,6 +94,8 @@ module.exports.run = function (port){
   console.timeEnd('parse');
 
   fs.writeFileSync('./test/modify.html', html);
+
+  console.log(source == fs.readFileSync('./test/modify.html').toString());
   // function type(value){
   //   // nan
   //   if (value !== value) {
