@@ -7,6 +7,11 @@
     <style type="text/css">
       body { margin: 0; }
     </style>
+    <script type="text/javascript">
+      var filename = '{{ filename }}';
+
+      filename = '<div ' + filename + '></div>';
+    </script>
   </head>
   <body>
     <div>
@@ -17,7 +22,7 @@
     <script type="text/javascript">
       var basename = '{{ basename }}';
 
-      basename = '<div ' + basename + '></div>'
+      basename = '<div ' + basename + '></div>';
     </script>
   </body>
 </html>
