@@ -94,7 +94,7 @@ module.exports.run = function (port){
   console.timeEnd('parse');
 
   console.log();
-  // console.log(html);
+  console.log(html);
   // function type(value){
   //   // nan
   //   if (value !== value) {
