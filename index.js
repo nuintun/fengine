@@ -14,7 +14,7 @@ module.exports.run = function (port){
     .readFileSync('./test/index.html')
     .toString();
 
-  var LOGS = true;
+  var LOGS = false;
 
   console.time('parse');
 
