@@ -4,17 +4,18 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <style type="text/css">
+      body { margin: 0; }
+    </style>
   </head>
   <body>
     <div>
-      {{ basename }}
-      <!--include(0)-->
-      <!--include(0)-->
-      <!--include(0)-->
-      <!--include(0)-->
-      <!--include(0)-->
-      <!--include(0)-->
+      <!--include(index.html)-->
+      {{ basename }}/{{filename}}
     </div>
-    <img {{filename}} src="index.html" style="background: url(index.html);"/>
+    <img src="index.html" style="background: url(index.html);"/>
+    <script type="text/javascript">
+      var basename = '{{ basename }}';
+    </script>
   </body>
 </html>

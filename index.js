@@ -3,6 +3,7 @@
  */
 
 var fs = require('fs');
+var path = require('path');
 var htmlParser = require('./lib/htmlparser/parser');
 
 module.exports.run = function (port){
@@ -71,14 +72,19 @@ module.exports.run = function (port){
         JSON.stringify(attr)
       );
 
-      html += attr[0] + value + attr[1];
+      html += value;
     }
   }, {
     dataElements: {
       vars: {
         start: /[{]{2}\s*/,
-        data: function (){
-          return 'aaa-bbb';
+        data: function (param){
+          switch (param.trim()) {
+            case 'basename':
+              return __dirname.replace(/\\/g, '/');
+            case 'filename':
+              return path.basename(__filename);
+          }
         },
         end: /\s*[}]{2}/
       }
