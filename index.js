@@ -14,7 +14,7 @@ module.exports.run = function (port){
     .readFileSync('./test/index.html')
     .toString();
 
-  var LOGS = false;
+  var LOGS = true;
 
   console.time('parse');
 
@@ -93,8 +93,7 @@ module.exports.run = function (port){
 
   console.timeEnd('parse');
 
-  console.log();
-  console.log(html);
+  fs.writeFileSync('./test/modify.html', html);
   // function type(value){
   //   // nan
   //   if (value !== value) {
