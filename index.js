@@ -18,7 +18,7 @@ module.exports.run = function (port){
 
   console.time('parse');
 
-  console.log(new Transform(true));
+  console.log(new Transform(''));
 
   console.timeEnd('parse');
 };
