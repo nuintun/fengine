@@ -1,28 +1,10 @@
-<!-- no-layout -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <style type="text/css">
-      body { margin: 0; }
-    </style>
-    <script type="text/javascript">
-      var filename = '{{ filename }}';
+<div>
+  <!--include(index.html)-->
+  {{ dirname }}/{{filename}}
+</div>
+<img src="index.html" style="background: url(index.html);"/>
+<script type="text/javascript">
+  var basename = '{{ basename }}';
 
-      filename = '<div ' + filename + '></div>';
-    </script>
-  </head>
-  <body>
-    <div>
-      <!--include(index.html)-->
-      {{ dirname }}/{{filename}}
-    </div>
-    <img src="index.html" style="background: url(index.html);"/>
-    <script type="text/javascript">
-      var basename = '{{ basename }}';
-
-      basename = '<div ' + basename + '></div>';
-    </script>
-  </body>
-</html>
+  basename = '<div ' + basename + '></div>';
+</script>
