@@ -32,7 +32,6 @@
   ],
   "dependencies": {
     "tilda": "^4.3.1",
-    "ncname": "^1.0.0",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
     "file-send": "^2.0.1"

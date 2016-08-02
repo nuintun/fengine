@@ -1,30 +1,60 @@
-/**
- * Created by nuintun on 2016/7/26.
+/*!
+ * index
+ * Version: 0.0.1
+ * Date: 2016/8/1
+ * https://github.com/Nuintun/fengine
+ *
+ * Original Author: http://www.jsbug.com/lab/samples/fengine/
+ *
+ * This is licensed under the MIT License (MIT).
+ * For details, see: https://github.com/Nuintun/fengine/blob/master/LICENSE
  */
+
+'use strict';
 
 var fs = require('fs');
 var path = require('path');
-var Transform = require('./lib/transform');
+var yaml = require('js-yaml');
+var Fengine = require('./lib/fengine');
+
+// variable declaration
+var CWD = process.cwd();
+
+/**
+ * file is exists sync
+ * @param path
+ * @param [mode]
+ * @returns {boolean}
+ */
+var existsSync = fs.accessSync ? function (path, mode){
+  try {
+    fs.accessSync(path, fs.constants[mode]);
+
+    return true;
+  } catch (e) {
+    return false;
+  }
+} : fs.existsSync;
 
 module.exports.run = function (port){
-  console.log('Server run at port %d.', port);
+  var yml = path.resolve(CWD, 'fengine.yml');
 
-  var html = '';
-  var source = fs
-    .readFileSync('./test/index.html')
-    .toString();
+  // file config
+  if (existsSync(yml, 'R_OK')) {
+    // parse yaml
+    try {
+      yml = fs.readFileSync(yml);
+      yml = yaml.safeLoad(yml);
+      yml = yml || {};
+    } catch (exception) {
+      console.log(JSON.stringify(exception, null, 2));
+    }
+  } else {
+    yml = {};
+  }
 
-  var LOGS = false;
+  yml.port = yml.port || port;
+  yml.hostname = yml.hostname || '127.0.0.1';
 
-  console.time('parse');
-
-  var parse = new Transform('./test/index.html', source, { layout: './layout.html' });
-
-  parse.on('data', function (data){
-    process.stdout.write(data);
-  });
-
-  parse.on('end', function (){
-    console.timeEnd('parse');
-  });
+  new Fengine(yml);
 };
