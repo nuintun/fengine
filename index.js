@@ -21,7 +21,7 @@ module.exports.run = function (port){
   var parse = new Transform('./test/index.html', source, { layout: './layout.html' });
 
   parse.on('data', function (data){
-    // process.stdout.write(data);
+    process.stdout.write(data);
   });
 
   parse.on('end', function (){
