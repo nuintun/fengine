@@ -59,7 +59,7 @@ module.exports.run = function (port){
   yml.layout = yml.layout || null;
   yml.hostname = yml.hostname || '127.0.0.1';
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
-  yaml.data = util.mix(yaml.data || {}, {
+  yml.data = util.mix(yml.data || {}, {
     server: yml.hostname + ':' + yml.port
   });
 
