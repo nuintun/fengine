@@ -53,6 +53,7 @@ module.exports.run = function (port){
     yml = {};
   }
 
+  yml.root = CWD;
   yml.port = yml.port || port;
   yml.hostname = yml.hostname || '127.0.0.1';
 
