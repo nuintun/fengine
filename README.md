@@ -45,7 +45,7 @@ layout: # default: null
 
 `port`: server port. `{Number}`
 
-`base`: transform file base dir. `{String}`
+`base`: the base dir of where the file transform start. `{String}`
 
 `layout`: default layout file. `{String}`
 
