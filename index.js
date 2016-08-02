@@ -15,6 +15,7 @@
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
+var util = require('./lib/util');
 var Fengine = require('./lib/fengine');
 
 // variable declaration
@@ -56,6 +57,7 @@ module.exports.run = function (port){
   yml.root = CWD;
   yml.port = yml.port || port;
   yml.hostname = yml.hostname || '127.0.0.1';
+  yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
 
   new Fengine(yml);
 };
