@@ -41,6 +41,16 @@ base: # default: process.cwd
   /html
 layout: # default: null
   /layout/layout.html
+data: # default: {server: server, dirname: dirname, filename: filename}
+  version:
+    0.0.1
+delimiter: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
+  data:
+    - {{
+    - }}
+  directive:
+    - <!--
+    - -->
 ```
 
 `port`: server port. `{Number}`
@@ -48,6 +58,10 @@ layout: # default: null
 `base`: the base dir of where the file transform start. `{String}`
 
 `layout`: default layout file. `{String}`
+
+`data`: the data of template. `{Object}`
+
+`delimiter`: the delimiter of file template engine. `{Object}`
 
 ## License
 
