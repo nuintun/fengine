@@ -1,0 +1,4 @@
+base:
+  /html
+layout:
+  /layout/layout.html
