@@ -1,6 +1,6 @@
 {
   "name": "fengine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A development tool for f2e",
   "author": {
     "name": "nuintun",
@@ -22,6 +22,7 @@
   "bin": {
     "fengine": "bin/fengine"
   },
+  "preferGlobal": true,
   "keywords": [
     "f2e",
     "server",
