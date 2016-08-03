@@ -44,22 +44,20 @@ module.exports.run = function (port){
   // file config
   if (existsSync(yml, 'R_OK')) {
     // parse yaml
-    try {
-      yml = fs.readFileSync(yml);
-      yml = yaml.safeLoad(yml);
-      yml = yml || {};
-    } catch (exception) {
-      console.log(colors.red.bold(JSON.stringify(exception, null, 2)));
-    }
+    var source = fs.readFileSync(yml);
+
+    yml = yaml.safeLoad(source, {
+      filename: yml
+    });
   } else {
     yml = {};
   }
 
   yml.root = CWD;
-  yml.port = yml.port || port;
   yml.layout = yml.layout || null;
   yml.delimiter = yml.delimiter || {};
   yml.hostname = yml.hostname || '127.0.0.1';
+  yml.port = util.number(yml.port) ? yml.port : port;
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
   yml.data = util.extend(true, yml.data || {}, {
     server: yml.hostname + ':' + yml.port
