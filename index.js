@@ -12,6 +12,7 @@
 
 'use strict';
 
+// lib
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
@@ -23,26 +24,35 @@ var Fengine = require('./lib/fengine');
 var CWD = process.cwd();
 
 /**
- * file is exists sync
- * @param path
- * @param [mode]
+ * file exists sync
+ * @param src
  * @returns {boolean}
  */
-var existsSync = fs.accessSync ? function (path, mode){
-  try {
-    fs.accessSync(path, fs.constants[mode]);
+function fileExistsSync(src){
+  if (!src) return false;
 
-    return true;
-  } catch (e) {
+  try {
+    return fs.statSync(src).isFile();
+  } catch (error) {
+    // check exception. if ENOENT - no such file or directory ok, file doesn't exist.
+    // otherwise something else went wrong, we don't have rights to access the file, ...
+    if (error.code != 'ENOENT') {
+      throw error;
+    }
+
     return false;
   }
-} : fs.existsSync;
+}
 
+/**
+ * run
+ * @param port
+ */
 module.exports.run = function (port){
   var yml = path.resolve(CWD, 'fengine.yml');
 
   // file config
-  if (existsSync(yml, 'R_OK')) {
+  if (fileExistsSync(yml)) {
     // parse yaml
     var source = fs.readFileSync(yml);
 
