@@ -66,13 +66,13 @@ module.exports.run = function (port){
   // format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
-  yml.delimiter = yml.delimiter || {};
   yml.hostname = yml.hostname || '127.0.0.1';
-  yml.port = util.number(yml.port) ? yml.port : port;
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
+  yml.port = port !== null ? port : util.number(yml.port) ? yml.port : 80;
   yml.data = util.extend(true, yml.data || {}, {
     server: yml.hostname + ':' + yml.port
   });
 
+  // run fengine
   new Fengine(yml);
 };

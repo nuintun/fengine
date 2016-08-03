@@ -19,14 +19,12 @@ new Tilda({
   examples: ['fengine', 'fengine -p 80', 'fengine --port 80']
 }).option([
   {
-    default: 80,
+    //default: 80,
     name: 'port',
     type: 'number',
     opts: ['p', 'port'],
     desc: 'Set the port of fengine server.'
   }
 ]).main(function (tilda){
-  var port = tilda.options.port;
-
-  fengine.run(port.value < 0 ? port.default : port.value);
+  fengine.run(tilda.options.port.value);
 });
