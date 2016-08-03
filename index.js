@@ -53,6 +53,7 @@ module.exports.run = function (port){
     yml = {};
   }
 
+  // format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
   yml.delimiter = yml.delimiter || {};
