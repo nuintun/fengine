@@ -15,6 +15,7 @@
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
+var colors = require('colors');
 var util = require('./lib/util');
 var Fengine = require('./lib/fengine');
 
@@ -48,7 +49,7 @@ module.exports.run = function (port){
       yml = yaml.safeLoad(yml);
       yml = yml || {};
     } catch (exception) {
-      console.log(JSON.stringify(exception, null, 2));
+      console.log(colors.red.bold(JSON.stringify(exception, null, 2)));
     }
   } else {
     yml = {};
