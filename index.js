@@ -45,6 +45,15 @@ function fileExistsSync(src){
 }
 
 /**
+ * assert port
+ * @param port
+ * @returns {*}
+ */
+function assertPort(port){
+  return util.number(port) && !util.nan(port) && !util.infinity(port);
+}
+
+/**
  * run
  * @param port
  */
@@ -56,9 +65,7 @@ module.exports.run = function (port){
     // parse yaml
     var source = fs.readFileSync(yml);
 
-    yml = yaml.safeLoad(source, {
-      filename: yml
-    });
+    yml = yaml.safeLoad(source, { filename: yml });
   } else {
     yml = {};
   }
@@ -66,12 +73,10 @@ module.exports.run = function (port){
   // format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
+  yml.data = util.extend({}, yml.data);
   yml.hostname = yml.hostname || '127.0.0.1';
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
-  yml.port = port !== null ? port : util.number(yml.port) ? yml.port : 80;
-  yml.data = util.extend(true, yml.data || {}, {
-    server: yml.hostname + ':' + yml.port
-  });
+  yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
 
   // run fengine
   new Fengine(yml);
