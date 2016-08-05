@@ -35,7 +35,7 @@ for help.
 
 you can config server by `fengine.yml` under server root:
 ```yml
-port: # default: 80
+port: # default: null
   80
 base: # default: process.cwd
   /html
@@ -46,6 +46,7 @@ data: # default: {server: server, dirname: dirname, filename: filename}
     0.0.1
 watch: # default: ['.htm', '.html'], .htm and .html always be watched
   - .xml
+  - .tpl
 tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
   data:
     - {{
