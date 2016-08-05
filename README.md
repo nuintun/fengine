@@ -44,6 +44,8 @@ layout: # default: null
 data: # default: {server: server, dirname: dirname, filename: filename}
   version:
     0.0.1
+watch: # default: ['.htm', '.html']
+  - .xml
 tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
   data:
     - {{
@@ -60,6 +62,8 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 `layout`: default layout file. `{String}`
 
 `data`: the data of template. `{Object}`
+
+`watch`: the extname of file want to be transform. `{Object}`
 
 `tags`: the tags of file template engine. `{Object}`
 

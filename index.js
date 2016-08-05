@@ -47,10 +47,32 @@ function fileExistsSync(src){
 /**
  * assert port
  * @param port
- * @returns {*}
+ * @returns {boolean}
  */
 function assertPort(port){
   return util.number(port) && !util.nan(port) && !util.infinity(port);
+}
+
+/**
+ * assert watch
+ * @param watch
+ * @returns {Array}
+ */
+function formatWatch(watch){
+  var unique = {};
+  var result = [];
+
+  watch.forEach(function (value){
+    value = value.toLowerCase();
+
+    if (!unique[value]) {
+      unique[value] = true;
+
+      result.push(value);
+    }
+  });
+
+  return result;
 }
 
 /**
@@ -77,6 +99,11 @@ module.exports.run = function (port){
   yml.hostname = yml.hostname || '127.0.0.1';
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
   yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
+  yml.watch = util.array(yml.watch)
+    ? formatWatch(yml.watch.concat(['.htm', '.html']))
+    : ['.htm', '.html'];
+
+  console.log(yml.watch);
 
   // run fengine
   new Fengine(yml);
