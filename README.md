@@ -63,7 +63,7 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 
 `tags`: the tags of file template engine. `{Object}`
 
-### Wiki
+### Documentation
 
 [fengine wiki](https://github.com/nuintun/fengine/wiki)
 
