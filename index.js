@@ -54,7 +54,7 @@ function assertPort(port){
 }
 
 /**
- * assert watch
+ * format watch
  * @param watch
  * @returns {Array}
  */
@@ -102,8 +102,6 @@ module.exports.run = function (port){
   yml.watch = util.array(yml.watch)
     ? formatWatch(yml.watch.concat(['.htm', '.html']))
     : ['.htm', '.html'];
-
-  console.log(yml.watch);
 
   // run fengine
   new Fengine(yml);
