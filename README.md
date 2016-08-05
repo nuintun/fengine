@@ -72,7 +72,8 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 
 [fengine wiki](https://github.com/nuintun/fengine/wiki)
 
-## License
+License
+==========
 
 [MIT](LICENSE)
 
