@@ -65,7 +65,7 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 
 ### Wiki
 
-[Fengine Wiki](https://github.com/nuintun/fengine/wiki)
+[fengine wiki](https://github.com/nuintun/fengine/wiki)
 
 ## License
 
