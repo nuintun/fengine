@@ -44,7 +44,7 @@ layout: # default: null
 data: # default: {server: server, dirname: dirname, filename: filename}
   version:
     0.0.1
-delimiter: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
+tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
   data:
     - {{
     - }}
@@ -61,7 +61,7 @@ delimiter: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 
 `data`: the data of template. `{Object}`
 
-`delimiter`: the delimiter of file template engine. `{Object}`
+`tags`: the tags of file template engine. `{Object}`
 
 ## License
 
