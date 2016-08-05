@@ -14,7 +14,7 @@ Getting started
 ### Install
 
 ```shell
-$ npm install fengine
+$ npm install -g fengine
 ```
 
 ### Introduction
