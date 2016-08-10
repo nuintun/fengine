@@ -41,7 +41,7 @@ base: # default: process.cwd
   /html
 layout: # default: null
   /layout/layout.html
-data: # default: {server: server, dirname: dirname, filename: filename}
+data: # default: {server, dirname, filename, extname}
   version:
     0.0.1
 watch: # default: ['.htm', '.html'], .htm and .html always be watched
