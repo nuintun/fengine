@@ -50,7 +50,7 @@ function fileExistsSync(src){
  * @returns {boolean}
  */
 function assertPort(port){
-  return util.number(port) && !util.nan(port) && !util.infinity(port);
+  return util.number(port) && isFinite(port);
 }
 
 /**
