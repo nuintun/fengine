@@ -36,7 +36,7 @@
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
     "file-send": "^2.0.3",
-    "mime-types": "^2.1.11"
+    "mime-types": "^2.1.12"
   },
   "readmeFilename": "README.md"
 }
