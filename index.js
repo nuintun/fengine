@@ -96,8 +96,8 @@ module.exports.run = function (port){
   yml.root = CWD;
   yml.layout = yml.layout || null;
   yml.data = util.extend({}, yml.data);
-  yml.hostname = yml.hostname || '127.0.0.1';
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
+  yml.hostname = yml.hostname && util.string(yml.hostname) ? yml.hostname : false;
   yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
   yml.watch = util.array(yml.watch)
     ? formatWatch(yml.watch.concat(['.htm', '.html']))
