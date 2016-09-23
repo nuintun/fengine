@@ -95,7 +95,7 @@ module.exports.run = function (port){
   // format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
-  yml.data = util.extend({}, yml.data);
+  yml.data = util.extend(true, {}, yml.data);
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
   yml.hostname = yml.hostname && util.string(yml.hostname) ? yml.hostname : false;
   yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
