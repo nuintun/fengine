@@ -1,6 +1,6 @@
 {
   "name": "fengine",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A development tool for f2e",
   "author": {
     "name": "nuintun",
@@ -32,7 +32,7 @@
     "development tool"
   ],
   "dependencies": {
-    "tilda": "^4.3.1",
+    "tilda": "^4.4.2",
     "colors": "^1.1.2",
     "js-yaml": "^3.6.1",
     "file-send": "^2.0.3",
