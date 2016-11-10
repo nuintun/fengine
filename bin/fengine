@@ -25,6 +25,6 @@ new Tilda({
     opts: ['p', 'port'],
     desc: 'Set the port of fengine server.'
   }
-]).main(function (tilda){
+]).main(function(tilda) {
   fengine.run(tilda.options.port.value);
 });

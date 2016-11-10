@@ -28,7 +28,7 @@ var CWD = process.cwd();
  * @param src
  * @returns {boolean}
  */
-function fileExistsSync(src){
+function fileExistsSync(src) {
   if (!src) return false;
 
   try {
@@ -36,7 +36,7 @@ function fileExistsSync(src){
   } catch (error) {
     // check exception. if ENOENT - no such file or directory ok, file doesn't exist.
     // otherwise something else went wrong, we don't have rights to access the file, ...
-    if (error.code != 'ENOENT') {
+    if (error.code !== 'ENOENT') {
       throw error;
     }
 
@@ -49,7 +49,7 @@ function fileExistsSync(src){
  * @param port
  * @returns {boolean}
  */
-function assertPort(port){
+function assertPort(port) {
   return util.number(port) && isFinite(port);
 }
 
@@ -58,11 +58,11 @@ function assertPort(port){
  * @param watch
  * @returns {Array}
  */
-function formatWatch(watch){
+function formatWatch(watch) {
   var unique = {};
   var result = [];
 
-  watch.forEach(function (value){
+  watch.forEach(function(value) {
     value = value.toLowerCase();
 
     if (!unique[value]) {
@@ -79,7 +79,7 @@ function formatWatch(watch){
  * run
  * @param port
  */
-module.exports.run = function (port){
+module.exports.run = function(port) {
   var yml = path.resolve(CWD, 'fengine.yml');
 
   // file config
@@ -99,9 +99,9 @@ module.exports.run = function (port){
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
   yml.hostname = yml.hostname && util.string(yml.hostname) ? yml.hostname : false;
   yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
-  yml.watch = util.array(yml.watch)
-    ? formatWatch(yml.watch.concat(['.htm', '.html']))
-    : ['.htm', '.html'];
+  yml.watch = util.array(yml.watch) ?
+    formatWatch(yml.watch.concat(['.htm', '.html'])) :
+    ['.htm', '.html'];
 
   // run fengine
   new Fengine(yml);
