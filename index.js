@@ -98,10 +98,8 @@ module.exports.run = function(port) {
   yml.data = util.extend(true, {}, yml.data);
   yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
   yml.hostname = yml.hostname && util.string(yml.hostname) ? yml.hostname : false;
-  yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : null;
-  yml.watch = util.array(yml.watch) ?
-    formatWatch(yml.watch.concat(['.htm', '.html'])) :
-    ['.htm', '.html'];
+  yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : undefined;
+  yml.watch = util.array(yml.watch) ? formatWatch(yml.watch.concat(['.htm', '.html'])) : ['.htm', '.html'];
 
   // run fengine
   new Fengine(yml);
