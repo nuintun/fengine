@@ -32,11 +32,11 @@
     "development tool"
   ],
   "dependencies": {
-    "tilda": "^4.4.4",
+    "tilda": "^4.4.8",
     "colors": "^1.1.2",
-    "js-yaml": "^3.7.0",
-    "file-send": "^2.0.6",
-    "mime-types": "^2.1.13"
+    "js-yaml": "^3.8.1",
+    "file-send": "^2.0.7",
+    "mime-types": "^2.1.14"
   },
   "readmeFilename": "README.md"
 }
