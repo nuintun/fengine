@@ -12,7 +12,7 @@
 
 'use strict';
 
-// lib
+// Import lib
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
@@ -20,11 +20,12 @@ var colors = require('colors');
 var util = require('./lib/util');
 var Fengine = require('./lib/fengine');
 
-// variable declaration
+// Variable declaration
 var CWD = process.cwd();
 
 /**
- * file exists sync
+ * File exists sync
+ *
  * @param src
  * @returns {boolean}
  */
@@ -45,7 +46,8 @@ function fileExistsSync(src) {
 }
 
 /**
- * assert port
+ * Assert port
+ *
  * @param port
  * @returns {boolean}
  */
@@ -54,7 +56,8 @@ function assertPort(port) {
 }
 
 /**
- * format watch
+ * Format watch
+ *
  * @param watch
  * @returns {Array}
  */
@@ -76,15 +79,16 @@ function formatWatch(watch) {
 }
 
 /**
- * run
+ * Run
+ *
  * @param port
  */
 module.exports.run = function(port) {
   var yml = path.resolve(CWD, 'fengine.yml');
 
-  // file config
+  // File config
   if (fileExistsSync(yml)) {
-    // parse yaml
+    // Parse yaml
     var source = fs.readFileSync(yml);
 
     yml = yaml.safeLoad(source, { filename: yml });
@@ -92,7 +96,7 @@ module.exports.run = function(port) {
     yml = {};
   }
 
-  // format options
+  // Format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
   yml.data = util.extend(true, {}, yml.data);
@@ -101,6 +105,6 @@ module.exports.run = function(port) {
   yml.port = port !== null ? port : assertPort(yml.port) ? Math.abs(yml.port) : undefined;
   yml.watch = util.array(yml.watch) ? formatWatch(yml.watch.concat(['.htm', '.html'])) : ['.htm', '.html'];
 
-  // run fengine
+  // Run fengine
   new Fengine(yml);
 };
