@@ -19,7 +19,6 @@ new Tilda({
   examples: ['fengine', 'fengine -p 80', 'fengine --port 80']
 }).option([
   {
-    //default: 80,
     name: 'port',
     type: 'number',
     opts: ['p', 'port'],
