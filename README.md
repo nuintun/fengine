@@ -1,14 +1,13 @@
 # fengine
 
->A development tool for f2e
+> A development tool for f2e
 >
->[![NPM Version][npm-image]][npm-url]
->[![Download Status][download-image]][npm-url]
->![Node Version][node-image]
->[![Dependencies][david-image]][david-url]
+> [![NPM Version][npm-image]][npm-url]
+> [![Download Status][download-image]][npm-url]
+> ![Node Version][node-image]
+> [![Dependencies][david-image]][david-url]
 
-Getting started
-==========
+## Getting started
 
 ### Install
 
@@ -71,8 +70,7 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
 
 [fengine wiki](https://github.com/nuintun/fengine/wiki)
 
-License
-==========
+## License
 
 [MIT](LICENSE)
 
