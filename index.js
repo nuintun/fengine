@@ -16,7 +16,6 @@
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
-var colors = require('colors');
 var util = require('./lib/util');
 var Fengine = require('./lib/fengine');
 

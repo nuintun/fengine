@@ -14,8 +14,8 @@ var pkg = require('../package.json');
 new Tilda({
   name: 'fengine',
   version: pkg.version,
-  description: colors.cyan.bold(pkg.description),
-  documentation: colors.magenta.bold(pkg.homepage),
+  description: colors.reset.cyan.bold(pkg.description),
+  documentation: colors.reset.magenta.bold(pkg.homepage),
   examples: ['fengine', 'fengine -p 80', 'fengine --port 80']
 }).option([
   {
