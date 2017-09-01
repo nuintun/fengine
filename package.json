@@ -1,6 +1,6 @@
 {
   "name": "fengine",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A development tool for f2e",
   "author": {
     "name": "nuintun",
@@ -35,7 +35,7 @@
     "tilda": "^4.4.10",
     "colors": "^1.1.2",
     "js-yaml": "^3.9.1",
-    "file-send": "^2.1.5",
+    "file-send": "^2.1.6",
     "mime-types": "^2.1.16"
   },
   "readmeFilename": "README.md"
