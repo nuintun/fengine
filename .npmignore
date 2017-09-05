@@ -15,8 +15,12 @@ node_modules
 # travis
 .travis.yml
 
+# appveyor
+appveyor.yml
+
 # tests
 tests
+test
 
 # makefile
 Makefile
@@ -27,3 +31,6 @@ Makefile
 # Logs
 logs
 *.log
+
+# npm lock file
+package-lock.json
