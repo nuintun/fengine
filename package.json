@@ -35,7 +35,7 @@
     "tilda": "^4.4.11",
     "colors": "^1.1.2",
     "js-yaml": "^3.10.0",
-    "file-send": "^2.1.8",
+    "file-send": "^2.1.9",
     "mime-types": "^2.1.17"
   },
   "readmeFilename": "README.md"
