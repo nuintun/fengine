@@ -33,6 +33,8 @@ for help.
 
 you can config server by `fengine.yml` under server root:
 ```yml
+hostname: # default: 0.0.0.0 and ::
+  127.0.0.1
 port: # default: null
   80
 base: # default: process.cwd
@@ -53,6 +55,8 @@ tags: # default {data: ['{{', '}}'], directive: ['<!--', '-->']}
     - <!--
     - -->
 ```
+
+`hostname`: server hostname, don't set if not necessary, see node http module docs. `{String}`
 
 `port`: server port. `{Number}`
 
