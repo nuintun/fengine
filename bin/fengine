@@ -5,25 +5,21 @@
 // set process title
 process.title = 'fengine';
 
-var Tilda = require('tilda');
 var fengine = require('../');
-var colors = require('colors/safe');
+var chalk = require('chalk');
+var utils = require('../lib/utils');
+var program = require('commander');
 var pkg = require('../package.json');
 
-// set commander
-new Tilda({
-  name: 'fengine',
-  version: pkg.version,
-  description: colors.reset.cyan.bold(pkg.description),
-  documentation: colors.reset.magenta.bold(pkg.homepage),
-  examples: ['fengine', 'fengine -p 80', 'fengine --port 80']
-}).option([
-  {
-    name: 'port',
-    type: 'number',
-    opts: ['p', 'port'],
-    desc: 'Set the port of fengine server.'
-  }
-]).main(function(tilda) {
-  fengine.run(tilda.options.port.value);
+program
+  .version(pkg.version)
+  .description(chalk.reset.cyan(pkg.description))
+  .option('-p, --port <port>', 'set the port of fengine server', Number);
+
+program.on('--help', function() {
+  process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.magenta(pkg.homepage) }.\n`);
 });
+
+program.parse(process.argv);
+
+console.log(utils.typeOf(program.port), utils.isLegalPort(program.port));
