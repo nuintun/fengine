@@ -2,24 +2,84 @@
 
 'use strict';
 
-// set process title
+// Set process title
 process.title = 'fengine';
 
-var fengine = require('../');
-var chalk = require('chalk');
-var utils = require('../lib/utils');
-var program = require('commander');
-var pkg = require('../package.json');
+var cluster = require('cluster');
 
-program
-  .version(pkg.version)
-  .description(chalk.reset.cyan(pkg.description))
-  .option('-p, --port <port>', 'set the port of fengine server', Number);
+// Master thread
+if (cluster.isMaster) {
+  var os = require('os');
+  var chalk = require('chalk');
+  var inquirer = require('inquirer');
+  var utils = require('../lib/utils');
+  var program = require('commander');
+  var pkg = require('../package.json');
+  var configure = require('../lib/configure');
 
-program.on('--help', function() {
-  process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.magenta(pkg.homepage) }.\n`);
-});
+  var prompt = [];
+  var CPUS = os.cpus().length;
 
-program.parse(process.argv);
+  program
+    .version(pkg.version)
+    .description(chalk.reset.cyan(pkg.description))
+    .option('-p, --port <port>', 'set the port <0-65535> of fengine server', Number);
 
-console.log(utils.typeOf(program.port), utils.isLegalPort(program.port));
+  program.on('--help', function() {
+    process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.magenta(pkg.homepage) }.\n`);
+  });
+
+  program.parse(process.argv);
+
+  if (program.hasOwnProperty('port')) {
+    if (!utils.isLegalPort(program.port)) {
+      prompt.push({
+        name: 'port',
+        type: 'input',
+        message: `Please input a valid port <0-65535>:`,
+        validate: function(value) {
+          if (value && utils.isLegalPort(+value)) {
+            return true;
+          }
+
+          return 'Oops, port ' + JSON.stringify(value) + ' is invalid!';
+        }
+      });
+    }
+  }
+
+  if (prompt.length) {
+    inquirer
+      .prompt(prompt)
+      .then(function(input) {
+        bootstrap(input.port);
+      })
+      .catch(function(exception) {
+        utils.log({
+          type: utils.LOG_LEVELS.ERROR,
+          data: exception.message
+        });
+      });
+  } else {
+    bootstrap(program.port);
+  }
+
+  function bootstrap(port) {
+    // Worker thread
+    var worker;
+
+    // Create thread
+    for (var i = 0; i < CPUS; i++) {
+      // Fork
+      worker = cluster.fork();
+
+      // Listen event
+      worker.on('message', utils.log);
+
+      // Bootstrap
+      worker.send(configure(port));
+    }
+  }
+} else {
+  require('../lib/worker');
+}

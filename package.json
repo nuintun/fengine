@@ -33,8 +33,8 @@
   ],
   "dependencies": {
     "chalk": "^2.2.0",
+    "inquirer": "^3.3.0",
     "commander": "^2.11.0",
-    "colors": "^1.1.2",
     "js-yaml": "^3.10.0",
     "file-send": "^2.2.0",
     "mime-types": "^2.1.17"
