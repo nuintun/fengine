@@ -16,7 +16,7 @@
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
-var util = require('./lib/util');
+var utils = require('./lib/utils');
 var Fengine = require('./lib/fengine');
 
 // Variable declaration
@@ -51,7 +51,7 @@ function fileExistsSync(src) {
  * @returns {boolean}
  */
 function assertPort(port) {
-  return util.number(port) && isFinite(port);
+  return utils.number(port) && isFinite(port);
 }
 
 /**
@@ -98,11 +98,11 @@ module.exports.run = function(port) {
   // Format options
   yml.root = CWD;
   yml.layout = yml.layout || null;
-  yml.data = util.extend(true, {}, yml.data);
-  yml.base = util.string(yml.base) ? path.join(CWD, yml.base) : CWD;
-  yml.hostname = yml.hostname && util.string(yml.hostname) ? yml.hostname : false;
+  yml.data = utils.extend(true, {}, yml.data);
+  yml.base = utils.string(yml.base) ? path.join(CWD, yml.base) : CWD;
+  yml.hostname = yml.hostname && utils.string(yml.hostname) ? yml.hostname : false;
   yml.port = assertPort(port) ? Math.abs(port) : assertPort(yml.port) ? Math.abs(yml.port) : 0;
-  yml.watch = util.array(yml.watch) ? formatWatch(yml.watch.concat(['.htm', '.html'])) : ['.htm', '.html'];
+  yml.watch = utils.array(yml.watch) ? formatWatch(yml.watch.concat(['.htm', '.html'])) : ['.htm', '.html'];
 
   // Run fengine
   new Fengine(yml);
