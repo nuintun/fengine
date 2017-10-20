@@ -24,11 +24,11 @@ if (cluster.isMaster) {
 
   program
     .version(pkg.version)
-    .description(chalk.reset.cyan(pkg.description))
+    .description(chalk.reset.bold.cyan(pkg.description))
     .option('-p, --port <port>', 'set the port <0-65535> of fengine server', Number);
 
   program.on('--help', function() {
-    process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.magenta(pkg.homepage) }.\n`);
+    process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.bold.magenta(pkg.homepage) }.\n`);
   });
 
   program.parse(process.argv);
