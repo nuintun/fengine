@@ -9,7 +9,7 @@ const cluster = require('cluster');
 
 // Master thread
 if (cluster.isMaster) {
-  // cluster.setupMaster({ silent: true });
+  cluster.setupMaster({ silent: true });
 
   const os = require('os');
   const chalk = require('chalk');
