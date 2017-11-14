@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "bin": {
     "fengine": "bin/fengine"
@@ -32,12 +32,11 @@
     "development tool"
   ],
   "dependencies": {
-    "chalk": "^2.2.0",
-    "inquirer": "^3.3.0",
+    "chalk": "^2.3.0",
+    "inquirer": "^4.0.0",
     "commander": "^2.11.0",
     "js-yaml": "^3.10.0",
-    "file-send": "^2.2.0",
-    "mime-types": "^2.1.17"
+    "file-send": "^3.0.0"
   },
   "readmeFilename": "README.md"
 }

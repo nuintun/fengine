@@ -5,29 +5,29 @@
 // Set process title
 process.title = 'fengine';
 
-var cluster = require('cluster');
+const cluster = require('cluster');
 
 // Master thread
 if (cluster.isMaster) {
-  cluster.setupMaster({ silent: true });
+  // cluster.setupMaster({ silent: true });
 
-  var os = require('os');
-  var chalk = require('chalk');
-  var inquirer = require('inquirer');
-  var utils = require('../lib/utils');
-  var program = require('commander');
-  var pkg = require('../package.json');
-  var configure = require('../lib/configure');
+  const os = require('os');
+  const chalk = require('chalk');
+  const inquirer = require('inquirer');
+  const utils = require('../lib/utils');
+  const program = require('commander');
+  const pkg = require('../package.json');
+  const configure = require('../lib/configure');
 
-  var prompt = [];
-  var CPUS = os.cpus().length;
+  const prompt = [];
+  const CPUS = os.cpus().length;
 
   program
     .version(pkg.version)
     .description(chalk.reset.bold.cyan(pkg.description))
     .option('-p, --port <port>', 'set the port <0-65535> of fengine server', Number);
 
-  program.on('--help', function() {
+  program.on('--help', () => {
     process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.bold.magenta(pkg.homepage) }.\n`);
   });
 
@@ -39,7 +39,7 @@ if (cluster.isMaster) {
         name: 'port',
         type: 'input',
         message: `Please input a valid port <0-65535>:`,
-        validate: function(value) {
+        validate: (value) => {
           if (value && utils.isLegalPort(+value)) {
             return true;
           }
@@ -53,10 +53,10 @@ if (cluster.isMaster) {
   if (prompt.length) {
     inquirer
       .prompt(prompt)
-      .then(function(input) {
+      .then((input) => {
         bootstrap(input.port);
       })
-      .catch(function(exception) {
+      .catch((exception) => {
         utils.log({
           type: utils.LOG_LEVELS.ERROR,
           data: exception.message
@@ -67,13 +67,10 @@ if (cluster.isMaster) {
   }
 
   function bootstrap(port) {
-    // Worker thread
-    var worker;
-
     // Create thread
-    for (var i = 0; i < CPUS; i++) {
+    for (let i = 0; i < CPUS; i++) {
       // Fork
-      worker = cluster.fork();
+      let worker = cluster.fork();
 
       // Listen event
       worker.on('message', utils.log);
