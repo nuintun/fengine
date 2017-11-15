@@ -36,7 +36,7 @@
     "inquirer": "^4.0.0",
     "commander": "^2.11.0",
     "js-yaml": "^3.10.0",
-    "file-send": "^3.0.0"
+    "file-send": "^3.0.1"
   },
   "readmeFilename": "README.md"
 }
