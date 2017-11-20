@@ -23,14 +23,7 @@
     "fengine": "bin/fengine"
   },
   "preferGlobal": true,
-  "keywords": [
-    "f2e",
-    "server",
-    "http",
-    "development",
-    "http server",
-    "development tool"
-  ],
+  "keywords": ["f2e", "server", "http", "development", "http server", "development tool"],
   "dependencies": {
     "chalk": "^2.3.0",
     "inquirer": "^4.0.0",

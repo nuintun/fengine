@@ -28,7 +28,7 @@ if (cluster.isMaster) {
     .option('-p, --port <port>', 'set the port <0-65535> of fengine server', Number);
 
   program.on('--help', () => {
-    process.stdout.write(`\n\n  Documentation can be found at ${ chalk.reset.bold.magenta(pkg.homepage) }.\n`);
+    process.stdout.write(`\n\n  Documentation can be found at ${chalk.reset.bold.magenta(pkg.homepage)}.\n`);
   });
 
   program.parse(process.argv);
@@ -39,7 +39,7 @@ if (cluster.isMaster) {
         name: 'port',
         type: 'input',
         message: `Please input a valid port <0-65535>:`,
-        validate: (value) => {
+        validate: value => {
           if (value && utils.isLegalPort(+value)) {
             return true;
           }
@@ -53,10 +53,10 @@ if (cluster.isMaster) {
   if (prompt.length) {
     inquirer
       .prompt(prompt)
-      .then((input) => {
+      .then(input => {
         bootstrap(input.port);
       })
-      .catch((exception) => {
+      .catch(exception => {
         utils.log({
           type: utils.LOG_LEVELS.ERROR,
           data: exception.message
