@@ -1,6 +1,6 @@
 {
   "name": "fengine",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A development tool for f2e.",
   "author": {
     "name": "nuintun",
@@ -26,10 +26,10 @@
   "keywords": ["f2e", "server", "http", "development", "http server", "development tool"],
   "dependencies": {
     "chalk": "^2.3.0",
-    "inquirer": "^4.0.0",
-    "commander": "^2.12.1",
+    "inquirer": "^4.0.2",
+    "commander": "^2.12.2",
     "js-yaml": "^3.10.0",
-    "file-send": "^3.0.3"
+    "file-send": "^3.0.4"
   },
   "readmeFilename": "README.md"
 }
