@@ -32,5 +32,8 @@ Makefile
 logs
 *.log
 
+# yarn lock file
+yarn.lock
+
 # npm lock file
 package-lock.json

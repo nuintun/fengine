@@ -32,11 +32,11 @@
     "development tool"
   ],
   "dependencies": {
-    "chalk": "^2.4.2",
-    "inquirer": "^6.3.1",
-    "commander": "^2.20.0",
+    "chalk": "^3.0.0",
+    "inquirer": "^7.0.1",
+    "commander": "^4.0.1",
     "js-yaml": "^3.13.1",
-    "file-send": "^4.0.1"
+    "file-send": "^4.0.2"
   },
   "readmeFilename": "README.md"
 }
