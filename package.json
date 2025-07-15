@@ -36,7 +36,13 @@
     "inquirer": "^7.0.1",
     "commander": "^4.0.1",
     "js-yaml": "^3.13.1",
-    "file-send": "^4.0.3"
+    "file-send": "^4.0.3",
+    "@snyk/protect": "latest"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "scripts": {
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
